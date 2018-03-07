@@ -1,7 +1,6 @@
 require 'uri'
 require 'net/http'
 require 'net/https'
-require "pry"
 
 class EncServer
   def self.get_invoices(params)

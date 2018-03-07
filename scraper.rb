@@ -1,5 +1,4 @@
 require 'time'
-require 'pry'
 require './enconta_server'
 
 class EncScraper
