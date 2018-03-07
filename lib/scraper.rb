@@ -2,7 +2,7 @@ require 'time'
 require_relative 'enconta_server'
 
 class EncScraper
-  attr_accessor :batch_days_size, :id, :iterations, :year, :total_invoices
+  attr_accessor :id, :year
 
   def initialize(id, year)
     self.id = id
@@ -10,7 +10,7 @@ class EncScraper
   end
 
   def run
-    return "Invalid year" unless valid_year?(year)
+    return "Invalid year" unless valid_year?
 
     finish_day = Time.parse(year+"-12-31")
     last_day = Time.parse(year+"-01-01")
@@ -53,7 +53,7 @@ class EncScraper
     day.strftime("%Y-%m-%d")
   end
 
-  def valid_year?(year)
+  def valid_year?
     y = Integer(year || '')
     return y > 1980 && y <= Time.now.year - 1
   rescue
