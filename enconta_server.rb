@@ -1,10 +1,11 @@
 require 'uri'
 require 'net/http'
 require 'net/https'
+require "pry"
 
 class EncServer
   def self.get_invoices(params)
-    return nil unless valid_params?(params)
+    return { data: nil, error: "Argumentos faltantes"} unless valid_params?(params)
     url = "http://34.209.24.195/facturas?id="
     url += "#{params[:id]}&start=#{params[:start]}"
     url += "&finish=#{params[:finish]}"
@@ -18,9 +19,9 @@ class EncServer
   end
 
   def self.parse_response(response)
-    Integer(response || '')
-  rescue ArgumentError
-    nil
+    {data: Integer(response || ''), error: nil}
+  rescue Exception => e
+    {data: nil, error: response}
   end
 
   def self.valid_params?(params)
