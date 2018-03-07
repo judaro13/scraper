@@ -1,5 +1,5 @@
 require 'time'
-require './enconta_server'
+require_relative 'enconta_server'
 
 class EncScraper
   attr_accessor :batch_days_size, :id, :iterations, :year, :total_invoices

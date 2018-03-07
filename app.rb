@@ -1,5 +1,5 @@
 
-require './scraper'
+require_relative 'lib/scraper'
 
 
 print "id: "
